@@ -1,0 +1,2 @@
+#!bin/bash
+ls -t -m -p | tr -d ' ' | sed 's/$/\//g'
