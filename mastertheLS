@@ -1,2 +1,2 @@
 #!bin/bash
-ls -t -m -p | tr -d ' ' | sed 's/$/\//g'
+ls -t -m -p | tr -d ' ' | sed 's/,$/\//' ; 
