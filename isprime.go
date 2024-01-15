@@ -3,13 +3,12 @@ package piscine
 func IsPrime(nb int) bool {
 	var res bool
 	if nb == 2 {
-		return true
+		return false
 	}
+	res = true
 	if nb > 2 {
 		for i := 2; i < nb; i++ {
-			if nb%i != 0 {
-				res = true
-			} else {
+			if nb%i == 0 {
 				res = false
 			}
 		}
