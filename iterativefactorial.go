@@ -1,4 +1,5 @@
 package piscine
+
 func IterativeFactorial(nb int) int {
 	if nb > 0 {
 		res := nb
