@@ -1,6 +1,6 @@
 package piscine
 
-func NbIsPrime(nb int) bool {
+func NbPrime(nb int) bool {
 	if nb <= 1 {
 		return false
 	}
@@ -13,7 +13,7 @@ func NbIsPrime(nb int) bool {
 }
 func FindNextPrime(nb int) int {
 	var res int
-	if NbIsPrime(nb) == true {
+	if NbPrime(nb) == true {
 		return nb
 	}
 	for i := 1; nb >= i; i++ {
