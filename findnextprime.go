@@ -11,6 +11,7 @@ func Nbprime(nb int) bool {
 	}
 	return true
 }
+
 func FindNextPrime(nb int) int {
 	var res int
 	if Nbprime(nb) == true {
