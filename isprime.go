@@ -1,6 +1,4 @@
-package main
-
-import "fmt"
+package piscine
 
 func IsPrime(nb int) bool {
 	var res bool
@@ -17,7 +15,4 @@ func IsPrime(nb int) bool {
 		return false
 	}
 	return res
-}
-func main() {
-	fmt.Println(IsPrime(17))
 }
