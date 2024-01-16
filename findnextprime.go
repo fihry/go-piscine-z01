@@ -4,7 +4,7 @@ func NbIsPrime(nb int) bool {
 	if nb <= 1 {
 		return false
 	}
-	for i := 2; i < nb; i++ {
+	for i := 2; i*i < nb; i++ {
 		if nb%i == 0 {
 			return false
 		}
@@ -19,7 +19,7 @@ func FindNextPrime(nb int) int {
 	} else if nb <= 2 {
 		return 2
 	}
-	for i := 1; nb >= i; i++ {
+	for i := 1; i*i <= nb; i++ {
 		if NbIsPrime(nb) == true {
 			res = nb
 			break
