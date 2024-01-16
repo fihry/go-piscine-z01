@@ -13,17 +13,15 @@ func NbIsPrime(nb int) bool {
 }
 
 func FindNextPrime(nb int) int {
-	var res int
 	if NbIsPrime(nb) == true {
-		res = nb
+		return nb
 	} else if nb <= 2 {
 		return 2
 	}
-	for i := 2; i*i <= nb; i++ {
-		nb += 1
-		if NbIsPrime(nb) == true {
-			return nb
+	for i := 2; i <= nb; i++ {
+		if NbIsPrime(nb) != true {
+			nb++
 		}
 	}
-	return res
+	return nb
 }
