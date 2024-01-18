@@ -8,8 +8,10 @@ import (
 
 func main() {
 	ProgramName := os.Args[0]
-	for _, char := range ProgramName {
-		z01.PrintRune(rune(char))
+	for index, char := range ProgramName {
+		if index > 1 {
+			z01.PrintRune(rune(char))
+		}
 	}
 	z01.PrintRune('\n')
 }
