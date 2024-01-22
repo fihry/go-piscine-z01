@@ -18,6 +18,6 @@ func main() {
 		if err != nil {
 			fmt.Println(err.Error())
 		}
-		fmt.Println(string(msg))
+		fmt.Print(string(msg))
 	}
 }
