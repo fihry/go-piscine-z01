@@ -14,7 +14,7 @@ func setPoint(ptr *point) {
 	ptr.y = 21
 }
 
-func Conv(i int) string {
+func toStr(i int) string {
 	var a string
 	isNegative := false
 	if i < 0 {
@@ -40,7 +40,7 @@ func main() {
 		y: 0,
 	}
 	setPoint(points)
-	result := "x = " + Conv(points.x) + ", y = " + Conv(points.y) + "\n"
+	result := "x = " + toStr(points.x) + ", y = " + toStr(points.y) + "\n"
 	for _, r := range result {
 		z01.PrintRune(r)
 	}
