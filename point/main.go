@@ -1,26 +1,13 @@
 package main
 
-import (
-	"github.com/01-edu/z01"
-)
+import "github.com/01-edu/z01"
 
-type point struct {
-	x int
-	y int
-}
-
-func setPoint(ptr *point) {
-	ptr.x = 42
-	ptr.y = 21
-}
+var k = "x = 42, y = 21\n"
 
 func main() {
-	points := &point{
-		x: 0,
-		y: 0,
-	}
-	setPoint(points)
-	for _, r := range "x = 42, y = 21\n" {
-		z01.PrintRune(r)
+	for _, i := range k {
+		z01.PrintRune(i)
 	}
 }
+
+// result most be :
