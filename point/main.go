@@ -10,11 +10,11 @@ type point struct {
 }
 
 func setPoint(ptr *point) {
-	ptr.x = -42
+	ptr.x = 42
 	ptr.y = 21
 }
 
-func ItoaConv(i int) string {
+func Conv(i int) string {
 	var a string
 	isNegative := false
 	if i < 0 {
@@ -25,7 +25,7 @@ func ItoaConv(i int) string {
 		return "0"
 	}
 	for i != 0 {
-		a = string(i%10+'0') + a
+		a = string(rune(i%10+'0')) + a
 		i = i / 10
 	}
 	if isNegative {
@@ -40,23 +40,8 @@ func main() {
 		y: 0,
 	}
 	setPoint(points)
-	xStr := ItoaConv(points.x)
-	yStr := ItoaConv(points.y)
-	z01.PrintRune('x')
-	z01.PrintRune(' ')
-	z01.PrintRune('=')
-	z01.PrintRune(' ')
-	for _, r := range xStr {
+	result := "x = " + Conv(points.x) + ", y = " + Conv(points.y) + "\n"
+	for _, r := range result {
 		z01.PrintRune(r)
 	}
-	z01.PrintRune(',')
-	z01.PrintRune(' ')
-	z01.PrintRune('y')
-	z01.PrintRune(' ')
-	z01.PrintRune('=')
-	z01.PrintRune(' ')
-	for _, r := range yStr {
-		z01.PrintRune(r)
-	}
-	z01.PrintRune('\n')
 }
