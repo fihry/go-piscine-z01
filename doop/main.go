@@ -78,6 +78,14 @@ func main() {
 						res = num1 * num2
 					}
 					if operator == "%" {
+						if num2 == 0 {
+							msg := []byte("No division by 0\n")
+							_, err := os.Stdout.Write(msg)
+							if err != nil {
+								panic(err)
+							}
+							return
+						}
 						res = num1 % num2
 					}
 					if operator == "/" {
