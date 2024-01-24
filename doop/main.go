@@ -67,28 +67,30 @@ func main() {
 		}
 		if !(os.Args[1] == "9223372036854775807" || os.Args[3] == "9223372036854775807") && !(os.Args[1] == "-9223372036854775809" || os.Args[3] == "-9223372036854775809") {
 			if len(os.Args) == 4 {
-				if operator == "-" {
-					res = num1 - num2
-				}
-				if operator == "+" {
-					res = num1 + num2
-				}
-				if operator == "*" {
-					res = num1 * num2
-				}
-				if operator == "%" {
-					res = num1 % num2
-				}
-				if operator == "/" {
-					if num2 == 0 {
-						msg := []byte("No division by 0\n")
-						_, err := os.Stdout.Write(msg)
-						if err != nil {
-							panic(err)
-						}
-						return
+				if operator == "-" || operator == "+" || operator == "*" || operator == "/" {
+					if operator == "-" {
+						res = num1 - num2
 					}
-					res = num1 / num2
+					if operator == "+" {
+						res = num1 + num2
+					}
+					if operator == "*" {
+						res = num1 * num2
+					}
+					if operator == "%" {
+						res = num1 % num2
+					}
+					if operator == "/" {
+						if num2 == 0 {
+							msg := []byte("No division by 0\n")
+							_, err := os.Stdout.Write(msg)
+							if err != nil {
+								panic(err)
+							}
+							return
+						}
+						res = num1 / num2
+					}
 				} else {
 					return
 				}
