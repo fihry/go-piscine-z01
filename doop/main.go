@@ -4,6 +4,37 @@ import (
 	"os"
 )
 
+func main() {
+	if len(os.Args) == 4 {
+		v1 := os.Args[1]
+		op := os.Args[2]
+		v2 := os.Args[3]
+		nbr1 := ToDigit(v1)
+		nbr2 := ToDigit(v2)
+		if checker(v1, v2, op) && nbr1 < 9223372036854775807 && nbr1 > -9223372036854775807 && nbr2 < 9223372036854775807 && nbr2 > -9223372036854775807 {
+			if op == "/" {
+				if nbr2 == 0 {
+					message := "No division by 0\n"
+					os.Stdout.WriteString(message)
+					return
+				}
+			}
+			if op == "%" {
+				if nbr2 == 0 {
+					message := "No modulo by 0\n"
+					os.Stdout.WriteString(message)
+					return
+				}
+			}
+
+			result := calculation(nbr1, op, nbr2)
+			res := itoa(result) + "\n"
+			message := res
+			os.Stdout.WriteString(message)
+		}
+	}
+}
+
 func ToDigit(s string) int {
 	sign := 1
 	var result int
@@ -26,88 +57,64 @@ func ToDigit(s string) int {
 	return result * sign
 }
 
-func IsNumeric(s string) bool {
-	for j := range s {
-		if (s[j] < '0' || s[j] > '9') && s[j] != '-' {
-			return false
+func checker(num1, num2, op string) bool {
+	res := true
+	for i := 0; i < len(num1); i++ {
+		if (num1[i] < 48 || num1[i] > 57) && num1[i] != '-' {
+			res = false
 		}
 	}
-	return true
+	for i := 0; i < len(num2); i++ {
+		if (num2[i] < 48 || num2[i] > 57) && num2[i] != '-' {
+			res = false
+		}
+	}
+	if op != "*" && op != "+" && op != "-" && op != "/" && op != "%" {
+		res = false
+	}
+	return res
 }
 
-func itoa(nb int) string {
+func calculation(a int, b string, c int) int {
+	var res int
+	if b == "*" {
+		res = a * c
+	}
+	if b == "-" {
+		res = a - c
+	}
+	if b == "+" {
+		res = a + c
+	}
+	if b == "/" {
+		res = a / c
+	}
+	if b == "%" {
+		res = a % c
+	}
+	return res
+}
+
+func itoa(n int) string {
+	var res string
 	negative := false
-	var re string
-	if nb == 0 {
+	if n == 0 {
 		return "0"
 	}
-	if nb < 0 {
+
+	if n < 0 {
 		negative = true
-		nb = -nb
+		n = n * -1
 	}
-	for nb != 0 {
-		re = string(rune(nb%10)+'0') + re
-		nb = nb / 10
+
+	for n != 0 {
+		digit := n % 10
+		res = string(rune(digit+'0')) + res
+		n /= 10
 	}
+
 	if negative {
-		re = "-" + re
+		res = "-" + res
 	}
-	return re
-}
-
-func main() {
-	num1 := ToDigit(os.Args[1])
-	operator := os.Args[2]
-	num2 := ToDigit(os.Args[3])
-	var res int
-	if !(len(os.Args) > 4 || len(os.Args) < 4) {
-
-		if !IsNumeric(os.Args[1]) == true || !IsNumeric(os.Args[3]) == true {
-			return
-		}
-		if !(os.Args[1] == "9223372036854775807" || os.Args[3] == "9223372036854775807") && !(os.Args[1] == "-9223372036854775809" || os.Args[3] == "-9223372036854775809") {
-			if len(os.Args) == 4 {
-				if operator == "-" || operator == "+" || operator == "*" || operator == "/" || operator == "%" {
-					if operator == "-" {
-						res = num1 - num2
-					}
-					if operator == "+" {
-						res = num1 + num2
-					}
-					if operator == "*" {
-						res = num1 * num2
-					}
-					if operator == "%" {
-						if num2 == 0 {
-							msg := []byte("No modulo by 0\n")
-							_, err := os.Stdout.Write(msg)
-							if err != nil {
-								panic(err)
-							}
-							return
-						}
-						res = num1 % num2
-					}
-					if operator == "/" {
-						if num2 == 0 {
-							msg := []byte("No division by 0\n")
-							_, err := os.Stdout.Write(msg)
-							if err != nil {
-								panic(err)
-							}
-							return
-						}
-						res = num1 / num2
-					}
-				} else {
-					return
-				}
-				result := []byte(itoa(res) + "\n")
-				_, err := os.Stdout.Write(result)
-				if err != nil {
-					panic(err)
-				}
-			}
-		}
-	}
+	return res
 }
