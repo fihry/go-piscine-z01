@@ -79,7 +79,7 @@ func main() {
 					}
 					if operator == "%" {
 						if num2 == 0 {
-							msg := []byte("No division by 0\n")
+							msg := []byte("No modulo by 0\n")
 							_, err := os.Stdout.Write(msg)
 							if err != nil {
 								panic(err)
