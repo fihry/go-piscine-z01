@@ -67,7 +67,7 @@ func main() {
 		}
 		if !(os.Args[1] == "9223372036854775807" || os.Args[3] == "9223372036854775807") && !(os.Args[1] == "-9223372036854775809" || os.Args[3] == "-9223372036854775809") {
 			if len(os.Args) == 4 {
-				if operator == "-" || operator == "+" || operator == "*" || operator == "/" {
+				if operator == "-" || operator == "+" || operator == "*" || operator == "/" || operator == "%" {
 					if operator == "-" {
 						res = num1 - num2
 					}
