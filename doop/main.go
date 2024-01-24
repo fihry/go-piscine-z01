@@ -77,7 +77,11 @@ func main() {
 				}
 				if operator == "/" {
 					if num2 == 0 {
-						print("No division by 0\n")
+						msg := []byte("No division by 0\n")
+						_, err := os.Stdout.Write(msg)
+						if err != nil {
+							panic(err)
+						}
 						return
 					}
 					res = num1 / num2
