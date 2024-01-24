@@ -36,17 +36,21 @@ func IsNumeric(s string) bool {
 }
 
 func itoa(nb int) string {
+	negative := false
 	var re string
 	if nb == 0 {
 		return "0"
 	}
 	if nb < 0 {
-		re = re + "-"
+		negative = true
 		nb = -nb
 	}
 	for nb != 0 {
-		re = re + string(rune(nb%10)+'0')
+		re = string(rune(nb%10)+'0') + re
 		nb = nb / 10
+	}
+	if negative {
+		re = "-" + re
 	}
 	return re
 }
