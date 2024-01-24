@@ -7,4 +7,3 @@ func DescendAppendRange(max, min int) []int {
 	}
 	return result
 }
-
