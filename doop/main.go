@@ -89,6 +89,8 @@ func main() {
 						return
 					}
 					res = num1 / num2
+				} else {
+					return
 				}
 				result := []byte(itoa(res) + "\n")
 				_, err := os.Stdout.Write(result)
