@@ -1,6 +1,6 @@
 package piscine
 
-func ActiveBits(n int) uint {
+func ActiveBits(n int) int {
 	count := 0
 	for n > 0 {
 		if n%2 == 1 {
@@ -8,5 +8,5 @@ func ActiveBits(n int) uint {
 		}
 		n /= 2
 	}
-	return uint(count)
+	return count
 }
