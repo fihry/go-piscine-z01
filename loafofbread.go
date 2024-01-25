@@ -3,11 +3,11 @@ package piscine
 func LoafOfBread(str string) string {
 	res := ""
 	crWord := ""
+	if len(str) == 0 {
+		return "\n"
+	}
 	if len(str) < 5 {
 		return "Invalid Output\n"
-	}
-	if str == "" {
-		return "\n"
 	}
 	for _, c := range str {
 		if c != ' ' && len(crWord) != 5 {
