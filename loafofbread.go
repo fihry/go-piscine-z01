@@ -6,6 +6,9 @@ func LoafOfBread(str string) string {
 	if len(str) < 5 {
 		return "Invalid Output\n"
 	}
+	if str == "" {
+		return "\n"
+	}
 	for _, c := range str {
 		if c != ' ' && len(crWord) != 5 {
 			crWord += string(c)
