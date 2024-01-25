@@ -4,7 +4,7 @@ func RockAndRoll(n int) string {
 	if n < 0 {
 		return "error: number is negative\n"
 	}
-	switch n >= 0 {
+	switch {
 	case n%2 == 0 && n%3 == 0:
 		return "rock and roll\n"
 	case n%2 == 0:
