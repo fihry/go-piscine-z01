@@ -1,24 +1,30 @@
 package piscine
 
 func LoafOfBread(str string) string {
-	res := ""
-	crWord := ""
 	if len(str) == 0 {
 		return "\n"
-	}
-	if len(str) < 5 {
+	} else if len(str) < 5 {
 		return "Invalid Output\n"
-	}
-	for _, c := range str {
-		if c != ' ' && len(crWord) != 5 {
-			crWord += string(c)
-		} else if len(crWord) == 5 {
-			res += crWord + " "
-			crWord = ""
+	} else {
+		jump := ""
+		i := 0
+		for _, e := range str {
+			if i%6 != 5 && e == ' ' {
+				continue
+			}
+			if i%6 == 5 {
+				jump += " "
+			} else {
+				jump += string(e)
+			}
+			i++
 		}
+		for i := len(jump) - 1; i >= 0; i-- {
+			if jump[i] != ' ' {
+				jump = jump[:i+1]
+				break
+			}
+		}
+		return jump + "\n"
 	}
-	if crWord != "" {
-		res += crWord
-	}
-	return res + "\n"
 }
