@@ -1,26 +1,10 @@
 package piscine
 
-type TreeNode struct {
-	Left, Right, Parent *TreeNode
-	Data                string
-}
-
-func BTreeInsertData(root *TreeNode, data string) *TreeNode {
+func BTreeApplyInorder(root *TreeNode, f func(...interface{}) (int, error)) {
 	if root == nil {
-		return &TreeNode{Data: data}
+		return
 	}
-	if root.Data > data {
-		if root.Left == nil {
-			root.Left = &TreeNode{Data: data, Parent: root}
-		} else {
-			BTreeInsertData(root.Left, data)
-		}
-	} else {
-		if root.Right == nil {
-			root.Right = &TreeNode{Data: data, Parent: root}
-		} else {
-			BTreeInsertData(root.Right, data)
-		}
-	}
-	return root
+	BTreeApplyInorder(root.Left, f)
+	f(root.Data)
+	BTreeApplyInorder(root.Right, f)
 }
